@@ -3,12 +3,9 @@ import sql from './db.js';
 // constructor
 const User = function (user) {
   this.username = user.username;
-  this.password = user.password;
-  this.isBlock = user.isBlock;
-  this.email = user.email;
-  this.createDate = user.createDate;
-  this.lastLogin = user.lastLogin;
+  this.online = user.online;
   this.id = user.id;
+  this.socketId = user.socketId;
 };
 
 User.create = (newUser, result) => {
@@ -59,15 +56,7 @@ User.getAll = (result) => {
 User.updateById = (id, user, result) => {
   sql.query(
     'UPDATE users SET username = ?, password = ?, isBlock = ?, email = ?, lastLogin = ?, createDate = ? WHERE id = ?',
-    [
-      user.username,
-      user.password,
-      user.isBlock,
-      user.email,
-      user.lastLogin,
-      user.createDate,
-      id
-    ],
+    [user.username, user.password, user.isBlock, user.email, user.lastLogin, user.createDate, id],
     (err, res) => {
       if (err) {
         console.log('error: ', err);

@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 // Create and Save a new user
 export const create = (req, res) => {
+  console.log(req.body);
   // Validate request
   if (!req.body) {
     res.status(400).send({
@@ -13,12 +14,9 @@ export const create = (req, res) => {
   // Create a User
   const user = new User({
     username: req.body.username,
-    password: req.body.password,
-    email: req.body.email,
-    createDate: req.body.createDate,
-    lastLogin: req.body.lastLogin,
+    online: true,
     id: uuidv4(),
-    isBlock: false,
+    socketId: uuidv4(),
   });
 
   // Save User in the database
