@@ -1,17 +1,13 @@
 import User from '../models/user.model.js';
 import { v4 as uuidv4 } from 'uuid';
 
-// Create and Save a new user
 export const create = (req, res) => {
-  console.log(req.body);
-  // Validate request
   if (!req.body) {
     res.status(400).send({
       message: 'Content can not be empty!',
     });
   }
 
-  // Create a User
   const user = new User({
     username: req.body.username,
     online: true,
@@ -19,7 +15,6 @@ export const create = (req, res) => {
     socketId: uuidv4(),
   });
 
-  // Save User in the database
   User.create(user, (err, data) => {
     if (err)
       res.status(500).send({
@@ -29,7 +24,6 @@ export const create = (req, res) => {
   });
 };
 
-// Retrieve all users from the database.
 export const findAll = (req, res) => {
   User.getAll((err, data) => {
     if (err)
@@ -40,7 +34,6 @@ export const findAll = (req, res) => {
   });
 };
 
-// Find a single user with a userId
 export const findOne = (req, res) => {
   User.findById(req.params.userId, (err, data) => {
     if (err) {
@@ -57,10 +50,8 @@ export const findOne = (req, res) => {
   });
 };
 
-// Update an user identified by the userId in the request
 export const update = (req, res) => {
   console.log(req.body);
-  // Validate Request
   if (!req.body) {
     res.status(400).send({
       message: 'Content can not be empty!',
@@ -82,7 +73,6 @@ export const update = (req, res) => {
   });
 };
 
-// Delete a user with the specified userId in the request
 export const deleteUser = (req, res) => {
   User.remove(req.params.userId, (err, data) => {
     if (err) {
@@ -99,7 +89,6 @@ export const deleteUser = (req, res) => {
   });
 };
 
-// Delete all users from the database.
 export const deleteAll = (req, res) => {
   User.removeAll((err, data) => {
     if (err)
