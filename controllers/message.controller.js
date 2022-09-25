@@ -13,6 +13,7 @@ export const create = (req, res) => {
     message: req.body.message,
     fromUserId: req.body.fromUserId,
     toUserId: req.body.toUserId,
+    currentDate: req.body.currentDate,
     id: uuidv4(),
   });
 
