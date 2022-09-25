@@ -34,4 +34,22 @@ Message.getAll = (result) => {
   });
 };
 
+Message.findById = (userId, result) => {
+  sql.query(`SELECT * FROM messages WHERE fromUserId = ? `, userId, (err, res) => {
+    if (err) {
+      console.log('error: ', err);
+      result(err, null);
+      return;
+    }
+
+    if (res.length) {
+      console.log('found user: ', res);
+      result(null, res);
+      return;
+    }
+
+    result({ kind: 'not_found' }, null);
+  });
+};
+
 export default Message;

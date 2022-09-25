@@ -34,3 +34,19 @@ export const findAll = (req, res) => {
     else res.send(data);
   });
 };
+
+export const findOne = (req, res) => {
+  Message.findById(req.params.fromUserId, (err, data) => {
+    if (err) {
+      if (err.kind === 'not_found') {
+        res.status(404).send({
+          message: `Not found User with id ${req.params.fromUserId}.`,
+        });
+      } else {
+        res.status(500).send({
+          message: 'Error retrieving User with id ' + req.params.fromUserId,
+        });
+      }
+    } else res.send(data);
+  });
+};
