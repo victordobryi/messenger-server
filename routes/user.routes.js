@@ -4,20 +4,20 @@ import {
   findAll,
   deleteUser,
   deleteAll,
-  create
+  create,
 } from '../controllers/user.controller.js';
 import express from 'express';
 
-export const router = express.Router();
+export const userRouter = express.Router();
 
-router.post('/', create);
+userRouter.post('/', create);
 
-router.get('/', findAll);
+userRouter.get('/', findAll);
 
-router.get('/:userId', findOne);
+userRouter.get('/:userId', findOne);
 
-router.put('/:userId', update);
+userRouter.put('/:userId', update);
 
-router.delete('/:userId', deleteUser);
+userRouter.delete('/:userId', deleteUser);
 
-router.delete('/', deleteAll);
+userRouter.delete('/', deleteAll);

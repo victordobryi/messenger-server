@@ -1,6 +1,5 @@
 import sql from './db.js';
 
-// constructor
 const User = function (user) {
   this.username = user.username;
   this.online = user.online;
@@ -35,7 +34,6 @@ User.findById = (userId, result) => {
       return;
     }
 
-    // not found user with the id
     result({ kind: 'not_found' }, null);
   });
 };
@@ -65,7 +63,6 @@ User.updateById = (id, user, result) => {
       }
 
       if (res.affectedRows == 0) {
-        // not found user with the id
         result({ kind: 'not_found' }, null);
         return;
       }
@@ -85,7 +82,6 @@ User.remove = (id, result) => {
     }
 
     if (res.affectedRows == 0) {
-      // not found user with the id
       result({ kind: 'not_found' }, null);
       return;
     }
