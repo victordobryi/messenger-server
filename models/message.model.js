@@ -7,6 +7,7 @@ const Message = function (message) {
   this.toUserId = message.toUserId;
   this.id = message.id;
   this.currentDate = message.currentDate;
+  this.fromUserName = message.fromUserName;
 };
 
 Message.create = (newMessage, result) => {

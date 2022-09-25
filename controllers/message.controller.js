@@ -14,6 +14,7 @@ export const create = (req, res) => {
     fromUserId: req.body.fromUserId,
     toUserId: req.body.toUserId,
     currentDate: req.body.currentDate,
+    fromUserName: req.body.fromUserName,
     id: uuidv4(),
   });
 
