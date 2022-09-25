@@ -4,5 +4,5 @@ import express from 'express';
 export const messageRouter = express.Router();
 
 messageRouter.post('/', create);
-messageRouter.get('/:userId', findOne);
+messageRouter.get('/:fromUserId', findOne);
 messageRouter.get('/', findAll);
