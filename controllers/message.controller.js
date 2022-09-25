@@ -16,20 +16,20 @@ export const create = (req, res) => {
     id: uuidv4(),
   });
 
-  User.create(message, (err, data) => {
+  Message.create(message, (err, data) => {
     if (err)
       res.status(500).send({
-        message: err.message || 'Some error occurred while creating the user.',
+        message: err.message || 'Some error occurred while creating the message.',
       });
     else res.send(data);
   });
 };
 
 export const findAll = (req, res) => {
-  User.getAll((err, data) => {
+  Message.getAll((err, data) => {
     if (err)
       res.status(500).send({
-        message: err.message || 'Some error occurred while retrieving users.',
+        message: err.message || 'Some error occurred while retrieving messages.',
       });
     else res.send(data);
   });
