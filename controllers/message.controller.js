@@ -51,3 +51,13 @@ export const findOne = (req, res) => {
     } else res.send(data);
   });
 };
+
+export const deleteAll = (req, res) => {
+  Message.removeAll((err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || 'Some error occurred while removing all messages.',
+      });
+    else res.send({ message: `All messages were deleted successfully!` });
+  });
+};

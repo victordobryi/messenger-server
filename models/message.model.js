@@ -53,4 +53,17 @@ Message.findById = (userId, result) => {
   });
 };
 
+Message.removeAll = (result) => {
+  sql.query('DELETE FROM messages', (err, res) => {
+    if (err) {
+      console.log('error: ', err);
+      result(null, err);
+      return;
+    }
+
+    console.log(`deleted ${res.affectedRows} messages`);
+    result(null, res);
+  });
+};
+
 export default Message;
