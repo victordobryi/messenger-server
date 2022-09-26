@@ -12,7 +12,7 @@ export const create = (req, res) => {
     username: req.body.username,
     online: true,
     id: uuidv4(),
-    socketId: uuidv4(),
+    socketId: req.body.socketId,
   });
 
   User.create(user, (err, data) => {
